@@ -1,0 +1,282 @@
+
+> team-ai-chat@0.1.0 dev
+> next dev
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\muhri\package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * C:\Users\muhri\OneDrive\Desktop\ai  app\package-lock.json
+
+ ⚠ Port 3000 is in use by process 26480, using available port 3002 instead.
+   ▲ Next.js 15.5.19
+   - Local:        http://localhost:3002
+   - Network:      http://10.5.0.2:3002
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 5.3s
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 2.2s (303 modules)
+ ○ Compiling /login ...
+ ✓ Compiled /login in 6.9s (629 modules)
+ GET /login 200 in 7577ms
+ ○ Compiling / ...
+ ✓ Compiled / in 2.2s (633 modules)
+ GET / 307 in 3169ms
+ ○ Compiling /chat ...
+ ✓ Compiled /chat in 29.2s (2287 modules)
+ GET /chat 200 in 33239ms
+ ✓ Compiled in 4.6s (1046 modules)
+ ○ Compiling /api/speech/config ...
+ ✓ Compiled /api/auth/[...nextauth] in 16.5s (2468 modules)
+ GET /api/conversations 200 in 18739ms
+ GET /api/models 200 in 18860ms
+ GET /api/usage 200 in 18889ms
+ GET /api/speech/config 200 in 18938ms
+ GET /api/conversations 200 in 304ms
+ GET /api/models 200 in 395ms
+ GET /api/usage 200 in 412ms
+ GET /api/speech/config 200 in 484ms
+ GET /chat 200 in 812ms
+ GET /api/auth/session 200 in 19946ms
+ GET /api/auth/session 200 in 1083ms
+ GET /api/auth/session 200 in 129ms
+ GET /api/auth/session 200 in 78ms
+ ○ Compiling /api/chat ...
+ ✓ Compiled /admin in 11.9s (2564 modules)
+ GET /admin 200 in 11725ms
+ GET /admin 200 in 1892ms
+ ✓ Compiled in 2.8s (1063 modules)
+ GET /api/conversations 200 in 1832ms
+ POST /api/chat 200 in 20235ms
+ ✓ Compiled in 5s (1063 modules)
+ GET /api/usage 200 in 1092ms
+ GET /admin 200 in 1634ms
+ ✓ Compiled in 1693ms (1063 modules)
+ GET /admin 200 in 1055ms
+ GET /admin 200 in 161ms
+ ○ Compiling /api/admin/usage ...
+ ✓ Compiled /api/admin/usage in 6.9s (2573 modules)
+ GET /api/admin/keys 200 in 7728ms
+ GET /api/admin/models 200 in 7751ms
+ GET /api/admin/users 200 in 7775ms
+ GET /api/admin/usage 200 in 7790ms
+ GET /api/admin/keys 200 in 185ms
+ GET /admin 200 in 576ms
+ GET /api/admin/models 200 in 285ms
+ GET /api/admin/users 200 in 384ms
+ GET /api/admin/usage 200 in 417ms
+ ○ Compiling /admin/users ...
+ ✓ Compiled /admin/users in 4s (2581 modules)
+ GET /admin/users 200 in 4454ms
+ GET /admin/users 200 in 120ms
+ GET /admin/users 200 in 100ms
+ GET /admin/users 200 in 94ms
+ GET /api/admin/users 200 in 180ms
+ GET /api/admin/keys 200 in 195ms
+ GET /api/admin/models 200 in 203ms
+ GET /api/admin/users 200 in 125ms
+ GET /api/admin/keys 200 in 128ms
+ GET /api/admin/models 200 in 148ms
+ ○ Compiling /api/admin/users/[id] ...
+ ✓ Compiled /api/admin/users/[id] in 2.3s (2579 modules)
+ GET /api/admin/users/cmpzdk59z00009wpg4lgx63xi 200 in 4004ms
+ GET /api/admin/users/cmpzdk59z00009wpg4lgx63xi 200 in 91ms
+ ○ Compiling /admin/usage ...
+ ✓ Compiled /admin/usage in 3.2s (2588 modules)
+ GET /admin/usage 200 in 3577ms
+ GET /admin/usage 200 in 115ms
+ GET /admin/usage 200 in 89ms
+ GET /api/admin/usage 200 in 85ms
+ GET /api/admin/usage 200 in 69ms
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 1145ms (1471 modules)
+ GET /api/auth/session 200 in 1375ms
+ GET /api/auth/session 200 in 84ms
+ ○ Compiling /admin/mcp ...
+ ✓ Compiled /admin/mcp in 4.6s (2536 modules)
+ GET /admin/mcp 200 in 5069ms
+ GET /admin/users 200 in 3089ms
+ GET /api/admin/users 200 in 176ms
+ GET /api/admin/keys 200 in 273ms
+ GET /api/admin/models 200 in 318ms
+ GET /api/admin/users 200 in 195ms
+ GET /api/admin/keys 200 in 203ms
+ GET /api/admin/models 200 in 236ms
+ GET /admin 200 in 128ms
+ GET /api/admin/users 200 in 212ms
+ GET /api/admin/keys 200 in 274ms
+ GET /api/admin/usage 200 in 306ms
+ GET /api/admin/models 200 in 329ms
+ GET /api/admin/users 200 in 187ms
+ GET /api/admin/keys 200 in 190ms
+ GET /api/admin/usage 200 in 172ms
+ GET /api/admin/models 200 in 175ms
+ ✓ Compiled in 1816ms (1073 modules)
+ ✓ Compiled in 891ms (1073 modules)
+ GET /admin 200 in 548ms
+ GET /admin 200 in 531ms
+ ✓ Compiled in 876ms (1073 modules)
+ GET /admin 200 in 117ms
+ ✓ Compiled in 695ms (1073 modules)
+ GET /admin 200 in 188ms
+ ✓ Compiled in 686ms (1073 modules)
+ GET /admin 200 in 397ms
+ ✓ Compiled in 928ms (1073 modules)
+ GET /admin 200 in 129ms
+ ✓ Compiled in 803ms (1073 modules)
+ GET /admin 200 in 176ms
+ GET /admin 200 in 162ms
+ ✓ Compiled in 3.8s (2827 modules)
+ GET /admin 200 in 3726ms
+ GET /admin 200 in 133ms
+ ✓ Compiled in 749ms (1073 modules)
+ ✓ Compiled in 805ms (1073 modules)
+ GET /admin 200 in 512ms
+ GET /admin 200 in 120ms
+ ✓ Compiled in 693ms (1073 modules)
+ ✓ Compiled in 877ms (1073 modules)
+ GET /admin 200 in 507ms
+ GET /admin 200 in 198ms
+ GET /admin 200 in 763ms
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 2.2s (1460 modules)
+ ✓ Compiled (1469 modules)
+ GET /api/auth/session 200 in 4682ms
+ GET /api/admin/keys 200 in 4765ms
+ GET /api/admin/models 200 in 4790ms
+ GET /api/admin/usage 200 in 4796ms
+ GET /api/admin/users 200 in 4813ms
+ GET /api/auth/session 200 in 104ms
+ ○ Compiling /admin/models ...
+ ✓ Compiled /admin/models in 6.1s (2555 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /admin/models 200 in 7018ms
+ GET /admin 200 in 914ms
+ GET /api/admin/users 200 in 372ms
+ GET /api/auth/session 200 in 539ms
+ GET /api/admin/keys 200 in 602ms
+ GET /api/admin/models 200 in 642ms
+ GET /api/admin/usage 200 in 654ms
+ GET /api/auth/session 200 in 79ms
+ ✓ Compiled in 1987ms (1078 modules)
+ ✓ Compiled in 2.1s (1078 modules)
+ GET /admin 200 in 1342ms
+ GET /admin 200 in 340ms
+ ✓ Compiled in 2.6s (1078 modules)
+ GET /admin 200 in 284ms
+ ✓ Compiled in 1894ms (1078 modules)
+ ✓ Compiled in 1205ms (1078 modules)
+ GET /admin 200 in 317ms
+ GET /admin 200 in 249ms
+ GET /admin 200 in 793ms
+ ○ Compiling /_not-found ...
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ✓ Compiled /_not-found in 4s (2538 modules)
+ GET /api/admin/keys 404 in 7672ms
+ GET /api/admin/models 404 in 7672ms
+ GET /api/admin/usage 404 in 7673ms
+ GET /api/auth/session 404 in 7641ms
+ GET /api/admin/users 404 in 7677ms
+ GET /admin 200 in 5146ms
+ GET /api/admin/users 200 in 215ms
+ GET /api/auth/session 200 in 347ms
+ GET /api/admin/keys 200 in 392ms
+ GET /api/admin/models 200 in 405ms
+ GET /api/admin/usage 200 in 419ms
+ GET /api/auth/session 200 in 58ms
+ ○ Compiling /admin/keys ...
+ ✓ Compiled /admin/keys in 7.7s (2563 modules)
+ GET /admin/keys 200 in 8303ms
+ GET /admin/usage 200 in 108ms
+ GET /admin/usage 200 in 251ms
+ GET /api/admin/usage 200 in 182ms
+ GET /api/auth/session 200 in 174ms
+ GET /api/admin/usage 200 in 103ms
+ GET /api/auth/session 200 in 90ms
+ ○ Compiling /admin/models ...
+ ✓ Compiled /admin/models in 2.9s (1485 modules)
+ GET /admin/keys 200 in 4105ms
+ GET /admin/models 200 in 6289ms
+ GET /admin/models 200 in 107ms
+ GET /api/admin/models 200 in 129ms
+ GET /api/admin/models 200 in 91ms
+ GET /admin/keys 200 in 123ms
+ GET /api/admin/keys 200 in 268ms
+ GET /api/admin/keys 200 in 90ms
+ GET /admin/models 200 in 149ms
+ GET /api/admin/models 200 in 145ms
+ GET /api/admin/models 200 in 113ms
+ ○ Compiling /api/admin/models/sync ...
+ ✓ Compiled /api/admin/models/sync in 3.8s (1759 modules)
+ ✓ Compiled in 2.9s (1086 modules)
+ ✓ Compiled in 2.5s (1086 modules)
+ GET /admin/models 200 in 1446ms
+ GET /admin/models 200 in 660ms
+ ✓ Compiled in 1131ms (1086 modules)
+ ✓ Compiled in 1202ms (1086 modules)
+ GET /admin/models 200 in 817ms
+ ✓ Compiled in 1104ms (1086 modules)
+ GET /admin/models 200 in 750ms
+ ✓ Compiled in 3s (1086 modules)
+ GET /admin/models 200 in 2567ms
+ GET /admin/models 200 in 1261ms
+ ✓ Compiled in 3.1s (1086 modules)
+ ✓ Compiled in 1204ms (1086 modules)
+ GET /admin/models 200 in 916ms
+ ✓ Compiled in 1218ms (1086 modules)
+ GET /admin/models 200 in 701ms
+ GET /admin/models 200 in 565ms
+ ✓ Compiled in 993ms (1086 modules)
+ ✓ Compiled in 1220ms (1086 modules)
+ GET /admin/models 200 in 918ms
+ ✓ Compiled in 1346ms (1086 modules)
+ GET /admin/models 200 in 973ms
+ ✓ Compiled in 995ms (1086 modules)
+ GET /admin/models 200 in 797ms
+ ✓ Compiled in 1448ms (1086 modules)
+ GET /admin/models 200 in 966ms
+ POST /api/admin/models/sync 200 in 28950ms
+ GET /api/admin/models 200 in 442ms
+ ✓ Compiled in 1432ms (1086 modules)
+ GET /admin/models 200 in 651ms
+ ✓ Compiled in 1252ms (1086 modules)
+ GET /admin/models 200 in 688ms
+ GET /admin/models 200 in 112ms
+ GET /admin/users 200 in 263ms
+ GET /api/admin/users 200 in 226ms
+ GET /api/admin/keys 200 in 283ms
+ GET /api/admin/models 200 in 299ms
+ GET /api/admin/users 200 in 188ms
+ GET /api/admin/keys 200 in 167ms
+ GET /api/admin/models 200 in 203ms
+ GET /admin 200 in 147ms
+ GET /api/admin/users 200 in 230ms
+ GET /api/admin/keys 200 in 417ms
+ GET /api/admin/models 200 in 432ms
+ GET /api/admin/usage 200 in 444ms
+ GET /api/admin/users 200 in 372ms
+ GET /api/admin/keys 200 in 261ms
+ GET /api/admin/usage 200 in 258ms
+ GET /api/admin/models 200 in 278ms
+ GET /admin/users 200 in 153ms
+ GET /api/admin/users 200 in 143ms
+ GET /api/admin/keys 200 in 249ms
+ GET /api/admin/models 200 in 271ms
+ GET /api/admin/users 200 in 245ms
+ GET /api/admin/keys 200 in 195ms
+ GET /api/admin/models 200 in 216ms
+ ✓ Compiled in 9s (1740 modules)
+ GET /admin/users 200 in 987ms
+ ✓ Compiled in 5.3s (1740 modules)
+ GET /admin/users 200 in 438ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'C:\Users\muhri\OneDrive\Desktop\ai  app\.next\cache\webpack\client-development\0.pack.gz_' -> 'C:\Users\muhri\OneDrive\Desktop\ai  app\.next\cache\webpack\client-development\0.pack.gz'
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'C:\Users\muhri\OneDrive\Desktop\ai  app\.next\cache\webpack\server-development\0.pack.gz_' -> 'C:\Users\muhri\OneDrive\Desktop\ai  app\.next\cache\webpack\server-development\0.pack.gz'
+ ✓ Compiled in 4.7s (1740 modules)
+ GET /admin/users 200 in 872ms
+ ✓ Compiled in 5.3s (1740 modules)
+ GET /admin/users 200 in 547ms
+ ✓ Compiled in 5.4s (1740 modules)
+ GET /admin/users 200 in 305ms

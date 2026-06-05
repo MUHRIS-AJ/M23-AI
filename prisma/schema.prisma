@@ -1,0 +1,200 @@
+// Prisma schema for the Team AI Chat platform.
+// DB: SQLite (local file). Swap `provider` to "postgresql" + change DATABASE_URL to migrate later.
+// NOTE: SQLite has no native enums — role/tier/period/transport are String with documented values.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Users ──────────────────────────────────────────────────
+// role: "ADMIN" | "MEMBER"
+// capPeriod: "MONTHLY" | "TOTAL"
+model User {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  email        String   @unique
+  passwordHash String?
+  name         String?
+  role         String   @default("MEMBER")
+  costCapUsd   Float? // null = no cap (unlimited)
+  capPeriod    String   @default("MONTHLY")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // ─ Personalization (user-editable in Settings) ─
+  personality      String? // custom system prompt injected into every chat
+  personaPreset    String? // id of a built-in persona preset, or null/"custom"
+  preferredName    String? // what the assistant should call the user
+  defaultModelId   String? // OpenRouter modelId to preselect (null = first allocated)
+  alwaysWebSearch  Boolean @default(false) // default the web toggle on
+  responseStyle    String? // "concise" | "balanced" | "detailed" | null
+
+  apiKeys       UserApiKey[]
+  models        UserModel[]
+  usageRecords  UsageRecord[]
+  conversations Conversation[]
+  skills        Skill[]
+}
+
+// ─── Admin-owned API credentials (encrypted at rest) ────────
+// provider: "openrouter" (default) | future: "openai" | "anthropic" | ...
+model ApiKey {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  label        String
+  provider     String   @default("openrouter")
+  keyEncrypted String // AES-256-GCM ciphertext, never returned to client
+  baseUrl      String? // override (e.g. custom OpenRouter-compatible endpoint)
+  
+  // Provider-specific details
+  creditUsd    Float? // Total credit/budget for this key
+  balanceUsd   Float? // Current remaining balance
+  expiresAt    DateTime? // Key expiration date
+  costPerReq   Float? // Average cost per request (for auto-assignment)
+  
+  // Assignment strategy
+  assignmentTier String? // "FREE" | "STANDARD" | "PREMIUM" | null (manual only)
+  autoAssign   Boolean @default(false) // Auto-assign to new users of tier
+  
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now()) @updatedAt
+
+  users        UserApiKey[]
+  usageRecords UsageRecord[]
+}
+
+// ─── Catalog of models (synced from providers + admin-editable) ──
+// tier: "FREE" | "ZERO_COST" | "PAID"
+// provider: which ApiKey.provider serves this model ("openrouter" | "openai" | "custom" | ...)
+model Model {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  modelId         String   @unique // e.g. "openai/gpt-4o" or "gpt-5.4"
+  displayName     String
+  provider        String   @default("openrouter") // routes chat to the right key + client
+  tier            String   @default("PAID")
+  promptPrice     Float    @default(0) // USD per token (input)
+  completionPrice Float    @default(0) // USD per token (output)
+  contextLength   Int      @default(0)
+  custom          Boolean  @default(false) // true = admin-added manually (not from a sync)
+  enabled         Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  users         UserModel[]
+  usageRecords  UsageRecord[]
+  conversations Conversation[]
+}
+
+// ─── Many-to-many: which API keys a user may use ────────────
+model UserApiKey {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  userId   String @db.ObjectId
+  apiKeyId String @db.ObjectId
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  apiKey ApiKey @relation(fields: [apiKeyId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, apiKeyId])
+  @@index([userId])
+}
+
+// ─── Many-to-many: which models a user may use ──────────────
+model UserModel {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  userId  String @db.ObjectId
+  modelId String @db.ObjectId
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  model Model @relation(fields: [modelId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, modelId])
+  @@index([userId])
+}
+
+// ─── Usage accounting (drives reports + cost-cap enforcement) ──
+model UsageRecord {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId           String   @db.ObjectId
+  modelId          String?  @db.ObjectId
+  apiKeyId         String?  @db.ObjectId
+  promptTokens     Int      @default(0)
+  completionTokens Int      @default(0)
+  costUsd          Float    @default(0)
+  createdAt        DateTime @default(now())
+
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  model  Model?  @relation(fields: [modelId], references: [id], onDelete: SetNull)
+  apiKey ApiKey? @relation(fields: [apiKeyId], references: [id], onDelete: SetNull)
+
+  @@index([userId, createdAt])
+}
+
+// ─── Chat history ───────────────────────────────────────────
+model Conversation {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  title     String   @default("New chat")
+  modelId   String?  @db.ObjectId
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  model    Model?    @relation(fields: [modelId], references: [id], onDelete: SetNull)
+  messages Message[]
+
+  @@index([userId, updatedAt])
+}
+
+// role: "user" | "assistant" | "system"
+model Message {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  conversationId String   @db.ObjectId
+  role           String
+  content        String
+  tokens         Int      @default(0)
+  costUsd        Float    @default(0)
+  createdAt      DateTime @default(now())
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId, createdAt])
+}
+
+// ─── MCP servers (global per-deployment in v1) ──────────────
+// transport: "sse" | "http"
+// scope: "GLOBAL"
+model McpServer {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  url         String
+  transport   String   @default("sse")
+  headersJson String? // JSON object of extra headers (e.g. auth)
+  enabled     Boolean  @default(true)
+  scope       String   @default("GLOBAL")
+  createdAt   DateTime @default(now())
+}
+
+// ─── Skills (reusable personas / prompt skills) ─────────────
+// scope: "PRIVATE" (owned by userId) | "GLOBAL" (admin-published, userId null)
+// A skill is a named system-prompt overlay the user can apply to a chat. The
+// optional webAccess flag asks the chat route to enable web tools for that turn.
+model Skill {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String?  @db.ObjectId // null = global skill published by an admin
+  name         String
+  description  String   @default("")
+  emoji        String   @default("✨")
+  instructions String // the system-prompt body injected when active
+  webAccess    Boolean  @default(false)
+  scope        String   @default("PRIVATE")
+  enabled      Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}

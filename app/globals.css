@@ -1,0 +1,238 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Class-based dark mode for Tailwind v4 (toggled via <html class="dark">) */
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* ── Claude component palette ───────────────────────────── */
+  --color-bg-0: var(--bg-0);
+  --color-bg-000: var(--bg-000);
+  --color-bg-100: var(--bg-100);
+  --color-bg-200: var(--bg-200);
+  --color-bg-300: var(--bg-300);
+  --color-text-100: var(--text-100);
+  --color-text-200: var(--text-200);
+  --color-text-300: var(--text-300);
+  --color-text-400: var(--text-400);
+  --color-text-500: var(--text-500);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+
+  --font-serif: "Source Serif 4", Georgia, serif;
+  --font-sans: var(--font-onest), "Onest", "Inter", system-ui, "Segoe UI", "Noto Sans",
+    "Noto Sans Arabic", "Noto Sans CJK SC", "Noto Sans Devanagari", sans-serif;
+
+  --shadow-input: 0 1px 2px -1px rgba(0, 0, 0, 0.08), 0 2px 8px -2px rgba(0, 0, 0, 0.04);
+  --shadow-input-hover: 0 1px 2px -1px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.08);
+  --shadow-input-focus: 0 0 0 2px rgba(217, 119, 87, 0.1), 0 4px 12px -2px rgba(0, 0, 0, 0.08);
+
+  /* ── shadcn / Radix component tokens ────────────────────── */
+  --color-background: var(--bg-0);
+  --color-foreground: var(--text-100);
+  --color-card: var(--bg-100);
+  --color-card-foreground: var(--text-100);
+  --color-popover: var(--bg-100);
+  --color-popover-foreground: var(--text-100);
+  --color-primary: var(--text-100);
+  --color-primary-foreground: var(--bg-0);
+  --color-secondary: var(--bg-200);
+  --color-secondary-foreground: var(--text-100);
+  --color-muted: var(--bg-200);
+  --color-muted-foreground: var(--text-400);
+  --color-accent-foreground: var(--bg-0);
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-destructive-foreground: #ffffff;
+  --color-border: var(--bg-300);
+  --color-input: var(--bg-300);
+  --color-ring: var(--accent);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --bg-0: #faf9f5;
+  --bg-000: #faf9f5;
+  --bg-100: #ffffff;
+  --bg-200: #f0eee6;
+  --bg-300: #dddddd;
+  --text-100: #1f1e1d;
+  --text-200: #3d3d3a;
+  --text-300: #73726c;
+  --text-400: #888888;
+  --text-500: #999999;
+  --accent: #d97757;
+  --accent-hover: #c6613f;
+  --radius: 0.65rem;
+  --ease-silk: cubic-bezier(0.2, 0, 0, 1);
+}
+
+.dark {
+  --bg-0: #212121;
+  --bg-000: #212121;
+  --bg-100: #262624;
+  --bg-200: #30302e;
+  --bg-300: #454540;
+  --text-100: #ececec;
+  --text-200: #e1e1e0;
+  --text-300: #b4b4b4;
+  --text-400: #8a8a88;
+  --text-500: #6b6b65;
+  --accent: #d2996e;
+  --accent-hover: #e5aa7f;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ── fade-in animation used by the chat input artifacts ──── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s var(--ease-silk, ease) both;
+}
+
+/* ── thin custom scrollbar used in composer + lists ─────── */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-300) transparent;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--bg-300);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-400);
+}
+
+/* ════════════════════════════════════════════════════════════
+   Liquid Glass — iOS-style frosted surfaces (M23 design system)
+   Translucent panels with backdrop blur, a glossy top specular
+   highlight, and soft inner/outer shadows for depth. Tokens adapt
+   to light/dark via the glass-* CSS variables.
+   ════════════════════════════════════════════════════════════ */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-bg-strong: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-highlight: rgba(255, 255, 255, 0.75);
+  --glass-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.18), 0 2px 8px -2px rgba(0, 0, 0, 0.08);
+  --glass-blur: 20px;
+}
+.dark {
+  --glass-bg: rgba(38, 38, 36, 0.55);
+  --glass-bg-strong: rgba(38, 38, 36, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-highlight: rgba(255, 255, 255, 0.14);
+  --glass-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.55), 0 2px 8px -2px rgba(0, 0, 0, 0.4);
+  --glass-blur: 22px;
+}
+
+/* Base frosted surface. Pair with a rounded-* radius. */
+.glass {
+  background-color: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+.glass-strong {
+  background-color: var(--glass-bg-strong);
+}
+
+/* Glossy specular highlight along the top edge — the "liquid" sheen.
+   Apply to a positioned element; the ::before sits above the surface. */
+.glass-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.glass-sheen::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 45%;
+  border-radius: inherit;
+  background: linear-gradient(
+    to bottom,
+    var(--glass-highlight),
+    transparent
+  );
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Interactive glass control (buttons/chips): subtle lift on hover. */
+.glass-control {
+  background-color: var(--glass-bg);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  transition: transform 0.2s var(--ease-silk), background-color 0.2s var(--ease-silk),
+    box-shadow 0.2s var(--ease-silk);
+}
+.glass-control:hover {
+  background-color: var(--glass-bg-strong);
+  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.18);
+}
+.glass-control:active {
+  transform: scale(0.97);
+}
+
+/* Graceful fallback where backdrop-filter is unsupported. */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .glass,
+  .glass-control {
+    background-color: var(--bg-100);
+  }
+  .dark .glass,
+  .dark .glass-control {
+    background-color: var(--bg-100);
+  }
+}
+
+/* Ambient page aura behind glass surfaces (used on full-screen views). */
+.aura {
+  position: relative;
+}
+.aura::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(48rem 40rem at 12% -8%, color-mix(in oklab, var(--accent) 20%, transparent), transparent),
+    radial-gradient(42rem 38rem at 100% 0%, color-mix(in oklab, var(--accent-hover) 16%, transparent), transparent);
+  opacity: 0.55;
+}

@@ -1,0 +1,101 @@
+
+> team-ai-chat@0.1.0 dev
+> next dev
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\muhri\package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * C:\Users\muhri\OneDrive\Desktop\ai  app\package-lock.json
+
+   ▲ Next.js 15.5.19
+   - Local:        http://localhost:3000
+   - Network:      http://10.5.0.2:3000
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 5.5s
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 822ms (303 modules)
+ ○ Compiling /login ...
+ ✓ Compiled /login in 7.9s (629 modules)
+ GET /login 200 in 8753ms
+ ○ Compiling / ...
+ ✓ Compiled / in 2.9s (633 modules)
+ GET / 307 in 4288ms
+ ○ Compiling /chat ...
+ ✓ Compiled /chat in 32.2s (2301 modules)
+ GET /chat 200 in 37394ms
+ ✓ Compiled in 5.6s (1046 modules)
+ ✓ Compiled in 3.2s (1046 modules)
+ ✓ Compiled in 1226ms (1046 modules)
+ GET /chat 200 in 670ms
+ ✓ Compiled in 1830ms (1046 modules)
+ ✓ Compiled in 2.1s (1046 modules)
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 19.6s (2466 modules)
+ ✓ Compiled in 2.9s (1046 modules)
+ ✓ Compiled in 1657ms (1046 modules)
+ ✓ Compiled in 620ms (1046 modules)
+ ✓ Compiled in 565ms (1046 modules)
+ ✓ Compiled in 1048ms (1046 modules)
+ ✓ Compiled in 584ms (1046 modules)
+ ✓ Compiled in 544ms (1046 modules)
+ ✓ Compiled in 721ms (1046 modules)
+ ✓ Compiled in 819ms (1046 modules)
+ ✓ Compiled in 782ms (1046 modules)
+ ✓ Compiled in 1041ms (1046 modules)
+ ✓ Compiled in 806ms (1046 modules)
+ ✓ Compiled in 709ms (1046 modules)
+ ✓ Compiled in 1087ms (1046 modules)
+ ✓ Compiled in 747ms (1046 modules)
+ ✓ Compiled in 592ms (1046 modules)
+ ✓ Compiled in 2.2s (2279 modules)
+ ✓ Compiled in 857ms (1046 modules)
+ ✓ Compiled in 486ms (1046 modules)
+ ✓ Compiled in 621ms (1046 modules)
+ ✓ Compiled in 2.3s (2279 modules)
+ ✓ Compiled in 1921ms (2279 modules)
+ ✓ Compiled in 1421ms (2279 modules)
+ ✓ Compiled in 2.1s (2287 modules)
+ ✓ Compiled in 438ms (1050 modules)
+ ✓ Compiled in 325ms (1050 modules)
+ ✓ Compiled in 1075ms (1050 modules)
+ ✓ Compiled in 451ms (1050 modules)
+ ✓ Compiled in 4.3s (1050 modules)
+ ✓ Compiled in 2.9s (2287 modules)
+ ✓ Compiled in 2.7s (2287 modules)
+ ✓ Compiled in 2.4s (2287 modules)
+ ✓ Compiled in 3.4s (2287 modules)
+ ✓ Compiled in 1296ms (2287 modules)
+ ✓ Compiled in 2.2s (2287 modules)
+ ✓ Compiled in 835ms (1050 modules)
+ ✓ Compiled in 656ms (1050 modules)
+ ✓ Compiled in 726ms (1050 modules)
+ ✓ Compiled in 542ms (1050 modules)
+ ✓ Compiled in 644ms (1050 modules)
+ ✓ Compiled in 620ms (1050 modules)
+ ✓ Compiled in 509ms (1050 modules)
+ ✓ Compiled in 401ms (1050 modules)
+ ✓ Compiled in 1114ms (1050 modules)
+ ✓ Compiled in 649ms (1050 modules)
+ ✓ Compiled in 483ms (1050 modules)
+ ✓ Compiled in 1039ms (1050 modules)
+ ✓ Compiled in 588ms (1050 modules)
+ ✓ Compiled in 2.3s (2287 modules)
+ ✓ Compiled in 2.1s (2287 modules)
+ ✓ Compiled in 557ms (1050 modules)
+ ✓ Compiled in 718ms (1050 modules)
+ ✓ Compiled in 577ms (1050 modules)
+ ✓ Compiled in 1065ms (1051 modules)
+ ✓ Compiled in 1703ms (2288 modules)
+ ✓ Compiled in 1987ms (2289 modules)
+ ✓ Compiled in 2s (2289 modules)
+ ✓ Compiled in 1648ms (2289 modules)
+ ✓ Compiled in 2s (2289 modules)
+ ✓ Compiled in 2.9s (2289 modules)
+ ✓ Compiled in 1023ms (1051 modules)
+ ✓ Compiled in 696ms (1051 modules)
+ ✓ Compiled in 571ms (1051 modules)
+ ✓ Compiled in 586ms (1051 modules)
